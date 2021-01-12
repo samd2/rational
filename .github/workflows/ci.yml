@@ -1,0 +1,589 @@
+name: Github Actions CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - develop
+      - githubactions*
+      - feature/**
+      - fix/**
+      - pr/**
+
+
+
+jobs:
+  posix:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "TOOLSET=gcc COMPILER=g++ CXXSTD=03,11 Job 0"
+            buildtype: "boost"
+            packages: ""
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++"
+            cxxstd: "03,11"
+            drone_job_uuid: "b6589fc6ab"
+          - name: "TOOLSET=gcc COMPILER=g++-4.4 CXXSTD=98,0x Job 1"
+            buildtype: "boost"
+            packages: "g++-4.4"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-4.4"
+            cxxstd: "98,0x"
+            drone_job_uuid: "356a192b79"
+          - name: "TOOLSET=gcc COMPILER=g++-4.6 CXXSTD=03,0x Job 2"
+            buildtype: "boost"
+            packages: "g++-4.6"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-4.6"
+            cxxstd: "03,0x"
+            drone_job_uuid: "da4b9237ba"
+          - name: "TOOLSET=gcc COMPILER=g++-4.7 CXXSTD=03,11 Job 3"
+            buildtype: "boost"
+            packages: "g++-4.7"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-4.7"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-4.7"
+            cxxstd: "03,11"
+            drone_job_uuid: "77de68daec"
+          - name: "TOOLSET=gcc COMPILER=g++-4.8 CXXSTD=03,11 Job 4"
+            buildtype: "boost"
+            packages: "g++-4.8"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-4.8"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-4.8"
+            cxxstd: "03,11"
+            drone_job_uuid: "1b64538924"
+          - name: "TOOLSET=gcc COMPILER=g++-4.9 CXXSTD=03,11 Job 5"
+            buildtype: "boost"
+            packages: "g++-4.9"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-4.9"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-4.9"
+            cxxstd: "03,11"
+            drone_job_uuid: "ac3478d69a"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=03,11,14,1z Job 6"
+            buildtype: "boost"
+            packages: "g++-5"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-5"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "c1dfd96eea"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=03,11,14,1z Job 7"
+            buildtype: "boost"
+            packages: "g++-6"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-6"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "902ba3cda1"
+          - name: "TOOLSET=gcc COMPILER=g++-7 CXXSTD=03,11,14,17 Job 8"
+            buildtype: "boost"
+            packages: "g++-7"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-7"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-7"
+            cxxstd: "03,11,14,17"
+            drone_job_uuid: "fe5dbbcea5"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=03,11,14,17 Job 9"
+            buildtype: "boost"
+            packages: "g++-8"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-8"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "0ade7c2cf9"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=03,11,14,17 Job 10"
+            buildtype: "boost"
+            packages: "g++-9"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-9"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "b1d5781111"
+          - name: "TOOLSET=gcc COMPILER=g++-10 CXXSTD=03,11,14,1 Job 11"
+            buildtype: "boost"
+            packages: "g++-10"
+            packages_to_remove: ""
+            os: "ubuntu-18.04"
+            cxx: "g++-10"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-10"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "17ba079149"
+          - name: "UBSAN=1 TOOLSET=gcc COMPILER=g++-9 CXXSTD=03, Job 12"
+            buildtype: "boost"
+            packages: "g++-9"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "g++-9"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            ubsan: "1"
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "03,11,14,17,2a"
+            ubsan_options: "print_stacktrace=1"
+            linkflags: "-fuse-ld=gold"
+            drone_job_uuid: "7b52009b64"
+          - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=03,11 Job 13"
+            buildtype: "boost"
+            packages: ""
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++"
+            cxxstd: "03,11"
+            drone_job_uuid: "bd307a3ec3"
+#
+# Github Actions provides images for Ubuntu 16.04 and later.
+# Older clang packages may not be available.
+# 
+#           - name: "TOOLSET=clang COMPILER=/usr/bin/clang++ CXXST Job 14"
+#             buildtype: "boost"
+#             packages: "clang-3.3"
+#             packages_to_remove: ""
+#             os: "ubuntu-16.04"
+#             cxx: "/usr/bin/clang++"
+#             cxxflags: ""
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             toolset: "clang"
+#             compiler: "/usr/bin/clang++"
+#             cxxstd: "03,11"
+#             drone_job_uuid: "fa35e19212"
+#
+# Github Actions provides images for Ubuntu 16.04 and later.
+# Older clang packages may not be available.
+# 
+#           - name: "TOOLSET=clang COMPILER=/usr/bin/clang++ CXXST Job 15"
+#             buildtype: "boost"
+#             packages: "clang-3.4"
+#             packages_to_remove: ""
+#             os: "ubuntu-16.04"
+#             cxx: "/usr/bin/clang++"
+#             cxxflags: ""
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             toolset: "clang"
+#             compiler: "/usr/bin/clang++"
+#             cxxstd: "03,11"
+#             drone_job_uuid: "f1abd67035"
+          - name: "TOOLSET=clang COMPILER=clang++-3.6 CXXSTD=03, Job 16"
+            buildtype: "boost"
+            packages: "clang-3.6"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-3.6"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "1574bddb75"
+          - name: "TOOLSET=clang COMPILER=clang++-3.7 CXXSTD=03, Job 17"
+            buildtype: "boost"
+            packages: "clang-3.7"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-3.7"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "0716d9708d"
+          - name: "TOOLSET=clang COMPILER=clang++-3.8 CXXSTD=03, Job 18"
+            buildtype: "boost"
+            packages: "clang-3.8"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-3.8"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-3.8"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "9e6a55b6b4"
+          - name: "TOOLSET=clang COMPILER=clang++-3.9 CXXSTD=03, Job 19"
+            buildtype: "boost"
+            packages: "clang-3.9"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-3.9"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-3.9"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "b3f0c7f6bb"
+          - name: "TOOLSET=clang COMPILER=clang++-4.0 CXXSTD=03, Job 20"
+            buildtype: "boost"
+            packages: "clang-4.0"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-4.0"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-4.0"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "91032ad7bb"
+          - name: "TOOLSET=clang COMPILER=clang++-5.0 CXXSTD=03, Job 21"
+            buildtype: "boost"
+            packages: "clang-5.0"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-5.0"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-5.0"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "472b07b9fc"
+          - name: "TOOLSET=clang COMPILER=clang++-6.0 CXXSTD=03, Job 22"
+            buildtype: "boost"
+            packages: "clang-6.0"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-6.0"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-6.0"
+            cxxstd: "03,11,14,17"
+            drone_job_uuid: "12c6fc06c9"
+          - name: "TOOLSET=clang COMPILER=clang++-7 CXXSTD=03,11 Job 23"
+            buildtype: "boost"
+            packages: "clang-7"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-7"
+            cxxflags: ""
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "7"
+            toolset: "clang"
+            compiler: "clang++-7"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "d435a6cdd7"
+          - name: "TOOLSET=clang COMPILER=clang++-8 CXXSTD=03,11 Job 24"
+            buildtype: "boost"
+            packages: "clang-8"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-8"
+            cxxflags: ""
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "8"
+            toolset: "clang"
+            compiler: "clang++-8"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "4d134bc072"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=03,11 Job 25"
+            buildtype: "boost"
+            packages: "clang-9"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-9"
+            cxxflags: ""
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "f6e1126ced"
+          - name: "TOOLSET=clang COMPILER=clang++-10 CXXSTD=03,1 Job 26"
+            buildtype: "boost"
+            packages: "clang-10"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-10"
+            cxxflags: ""
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "10"
+            toolset: "clang"
+            compiler: "clang++-10"
+            cxxstd: "03,11,14,17,2a"
+            drone_job_uuid: "887309d048"
+          - name: "UBSAN=1 TOOLSET=clang COMPILER=clang++-10 CXX Job 27"
+            buildtype: "boost"
+            packages: "clang-10"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-10"
+            cxxflags: ""
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "10"
+            ubsan: "1"
+            toolset: "clang"
+            compiler: "clang++-10"
+            cxxstd: "03,11,14,17,2a"
+            ubsan_options: "print_stacktrace=1"
+            drone_job_uuid: "bc33ea4e26"
+          - name: "TOOLSET=clang COMPILER=clang++-libc++ CXXSTD= Job 28"
+            buildtype: "boost"
+            packages: "libc++-dev"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-libc++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "clang"
+            compiler: "clang++-libc++"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "0a57cb53ba"
+          - name: "UBSAN=1 TOOLSET=clang COMPILER=clang++-libc++ Job 29"
+            buildtype: "boost"
+            packages: "libc++-dev"
+            packages_to_remove: ""
+            os: "ubuntu-16.04"
+            cxx: "clang++-libc++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            ubsan: "1"
+            toolset: "clang"
+            compiler: "clang++-libc++"
+            cxxstd: "03,11,14,1z"
+            ubsan_options: "print_stacktrace=1"
+            drone_job_uuid: "7719a1c782"
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: boost
+        #if: ${{ matrix.buildtype }} == boost
+        if: matrix.buildtype == 'boost'
+        shell: bash
+        env:
+          TRAVIS_BRANCH: ${{ github.base_ref }}
+          CXX: ${{ matrix.cxx }}
+          CXXFLAGS: ${{ matrix.cxxflags }}
+          SOURCES: ${{ matrix.sources }}
+          LLVM_OS: ${{ matrix.llvm_os }}
+          LLVM_VER: ${{ matrix.llvm_ver }}
+          PACKAGES: ${{ matrix.packages }}
+          PACKAGES_TO_REMOVE: ${{ matrix.packages_to_remove }}
+          TOOLSET: ${{ matrix.toolset }}
+          COMPILER: ${{ matrix.compiler }}
+          CXXSTD: ${{ matrix.cxxstd }}
+          DRONE_JOB_UUID: ${{ matrix.drone_job_uuid }}
+          UBSAN: ${{ matrix.ubsan }}
+          UBSAN_OPTIONS: ${{ matrix.ubsan_options }}
+          LINKFLAGS: ${{ matrix.linkflags }}
+        run: |
+          echo '==================================> SETUP'
+          BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
+          echo '==================================> PACKAGES'
+          set -ex
+          echo "Before package removal or install"
+          whoami
+          dpkg -l
+          echo "Checking /usr/local"
+          ls -al /usr/local
+          echo "Checking clang"
+          which clang++ || true
+          clang++ --version || true
+          ls -al /etc/alternatives
+          ls -al /usr/bin/c*
+          echo "about to run sudo apt-get purge -y $PACKAGES_TO_REMOVE"
+          if [ -n "$PACKAGES_TO_REMOVE" ]; then sudo apt-get purge -y $PACKAGES_TO_REMOVE; fi
+          echo "about to run linux-cxx-install.sh"
+          ./.github/boost-ci/ci/drone/linux-cxx-install.sh
+          echo "After package removal and install"
+          dpkg -l
+          echo "Checking /usr/local"
+          ls -al /usr/local
+          echo "Checking clang"
+          which clang++ || true
+          clang++ --version || true
+          ls -al /etc/alternatives
+          ls -al /usr/bin/c*
+          echo '==================================> INSTALL AND COMPILE'
+          . .github/scripts/boost.sh
+       
+
+  osx:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=03,11,1 Job 30"
+            buildtype: "boost"
+            packages: ""
+            os: "macos-10.15"
+            cxx: "clang++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            xcode_version: ""
+            toolset: "clang"
+            compiler: "clang++"
+            cxxstd: "03,11,14,1z"
+            drone_job_uuid: "22d200f867"
+          - name: "UBSAN=1 TOOLSET=clang COMPILER=clang++ CXXSTD Job 31"
+            buildtype: "boost"
+            packages: ""
+            os: "macos-10.15"
+            cxx: "clang++"
+            cxxflags: ""
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            xcode_version: ""
+            ubsan: "1"
+            toolset: "clang"
+            compiler: "clang++"
+            cxxstd: "03,11,14,1z"
+            ubsan_options: "print_stacktrace=1"
+            drone_job_uuid: "632667547e"
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set DEVELOPER_DIR
+        if: matrix.xcode_version != ''
+        run: echo "::set-env name=DEVELOPER_DIR:/Applications/Xcode-:${{ matrix.xcode_version }}.app/Contents/Developer"
+      - name: Test DEVELOPER_DIR
+        run: echo $DEVELOPER_DIR
+      - name: boost
+        #if: ${{ matrix.buildtype }} == boost
+        if: matrix.buildtype == 'boost'
+        shell: bash
+        env:
+          TRAVIS_BRANCH: ${{ github.base_ref }}
+          CXX: ${{ matrix.cxx }}
+          CXXFLAGS: ${{ matrix.cxxflags }}
+          SOURCES: ${{ matrix.sources }}
+          LLVM_OS: ${{ matrix.llvm_os }}
+          LLVM_VER: ${{ matrix.llvm_ver }}
+          PACKAGES: ${{ matrix.packages }}
+          TOOLSET: ${{ matrix.toolset }}
+          COMPILER: ${{ matrix.compiler }}
+          CXXSTD: ${{ matrix.cxxstd }}
+          DRONE_JOB_UUID: ${{ matrix.drone_job_uuid }}
+          UBSAN: ${{ matrix.ubsan }}
+          UBSAN_OPTIONS: ${{ matrix.ubsan_options }}
+          LINKFLAGS: ${{ matrix.linkflags }}
+        run: |
+          echo '==================================> SETUP'
+          set -ex
+          uname -a
+          BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && /usr/local/bin/wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
+          echo '==================================> PACKAGES'
+          ./.github/boost-ci/ci/drone/osx-cxx-install.sh
+
+          echo '==================================> INSTALL AND COMPILE'
+          . .github/scripts/boost.sh
+       
