@@ -415,6 +415,7 @@ jobs:
           UBSAN_OPTIONS: ${{ matrix.ubsan_options }}
           LINKFLAGS: ${{ matrix.linkflags }}
           TRAVIS_BRANCH: ${{ github.base_ref }}
+          TRAVIS_OS_NAME: "linux"
         run: |
           echo '==================================> SETUP'
           if [ -n "$GHA_CONTAINER" ]; then
@@ -567,6 +568,7 @@ jobs:
           UBSAN_OPTIONS: ${{ matrix.ubsan_options }}
           LINKFLAGS: ${{ matrix.linkflags }}
           TRAVIS_BRANCH: ${{ github.base_ref }}
+          TRAVIS_OS_NAME: "osx"
         run: |
           echo '==================================> SETUP'
           set -ex
